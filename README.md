@@ -2,7 +2,7 @@
 Various scripts to import data/interface with one-off pure math research projects in Julia.
 
 This is intended to be "quick and dirty", so that researchers 
-(especially those using [Oscar.jl](https://docs.oscar-system.org/stable/) can use the
+(especially those using [Oscar.jl](https://docs.oscar-system.org/stable/)) can use the
 data/software in experiments. 
 As such, not much attention is paid to software development or performance.
 
