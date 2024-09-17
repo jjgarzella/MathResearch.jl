@@ -24,6 +24,8 @@ Pkg.add("UUIDs")
 
 include("src/ToriccontrolledReduction.jl")
 
+setup_tcr() # this will download ToricControlledReduction, you only ever need to run it once
+
 using Oscar
 
 p = 11
