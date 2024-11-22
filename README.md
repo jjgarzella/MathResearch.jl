@@ -17,17 +17,26 @@ and also feel free to use the code from this repo (it's MIT licensed).
 
 ## Toric Controlled Reduction
 
-[Original Github Repository](https://github.com/edgarcosta/ToricControlledReduction)
+ToricControlledReduction calculates the zeta function of toric hypersurfaces
+over finite fields. See the [original Github repository](https://github.com/edgarcosta/ToricControlledReduction)
+for more info. This port only supports projective hypersurfaces right now.
+
+To set up ToricControlledReduction, make sure you have Julia install,
+clone this repo, and go into the root directory of the clone. 
+Then open a Julia REPL and run:
 
 ```
 Pkg.add("UUIDs")
 
-include("src/ToriccontrolledReduction.jl")
+# run these two lines every time you open the REPL
+using Oscar 
+include("src/ToriccontrolledReduction.jl") 
 
 setup_tcr() # this will download ToricControlledReduction, you only ever need to run it once
+```
 
-using Oscar
-
+Now, you can run examples like this:
+```
 p = 11
 
 R, (x,y,z,w) = polynomial_ring(GF(p),4)
