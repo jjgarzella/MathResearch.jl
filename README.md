@@ -17,7 +17,7 @@ and also feel free to use the code from this repo (it's MIT licensed).
 
 ## Toric Controlled Reduction
 
-[Repository](https://github.com/edgarcosta/ToricControlledReduction)
+[Original Github Repository](https://github.com/edgarcosta/ToricControlledReduction)
 
 ```
 Pkg.add("UUIDs")
