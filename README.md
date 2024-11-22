@@ -19,7 +19,7 @@ and also feel free to use the code from this repo (it's MIT licensed).
 
 ToricControlledReduction calculates the zeta function of toric hypersurfaces
 over finite fields. See the [original Github repository](https://github.com/edgarcosta/ToricControlledReduction)
-for more info. This port only supports projective hypersurfaces right now.
+for more info. This wrapper only supports projective hypersurfaces right now.
 
 To set up ToricControlledReduction, make sure you have Julia install,
 clone this repo, and go into the root directory of the clone. 
