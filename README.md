@@ -2,7 +2,7 @@
 Various scripts to import data/interface with one-off pure math research projects in Julia.
 
 This is intended to be "quick and dirty", so that researchers 
-(especially those using [Oscar.jl](https://docs.oscar-system.org/stable/) can use the
+(especially those using [Oscar.jl](https://docs.oscar-system.org/stable/)) can use the
 data/software in experiments. 
 As such, not much attention is paid to software development or performance.
 
@@ -17,15 +17,26 @@ and also feel free to use the code from this repo (it's MIT licensed).
 
 ## Toric Controlled Reduction
 
-[Repository](https://github.com/edgarcosta/ToricControlledReduction)
+ToricControlledReduction calculates the zeta function of toric hypersurfaces
+over finite fields. See the [original Github repository](https://github.com/edgarcosta/ToricControlledReduction)
+for more info. This wrapper only supports projective hypersurfaces right now.
+
+To set up ToricControlledReduction, make sure you have Julia install,
+clone this repo, and go into the root directory of the clone. 
+Then open a Julia REPL and run:
 
 ```
 Pkg.add("UUIDs")
 
-include("src/ToriccontrolledReduction.jl")
+# run these two lines every time you open the REPL
+using Oscar 
+include("src/ToriccontrolledReduction.jl") 
 
-using Oscar
+setup_tcr() # this will download ToricControlledReduction, you only ever need to run it once
+```
 
+Now, you can run examples like this:
+```
 p = 11
 
 R, (x,y,z,w) = polynomial_ring(GF(p),4)
