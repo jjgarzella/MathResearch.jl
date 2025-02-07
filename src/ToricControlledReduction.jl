@@ -108,6 +108,22 @@ function setup_tcr()
 end
 
 """
+"""
+function zeta_function_cr(p,polynomial)
+  unique_id = string(uuid1())
+
+  d = total_degree(f) # assumes homogeneous
+  n = length(gens(parent(f)))
+  name = "data/cr_ex_dim$(n-1)_degree$(d)_" * unique_id
+  open(name,"w") do outfile
+    println(outfile,cr_string(p,polynomial))
+  end
+  
+  run(`./run_cr.bash $name`)
+  run(`cat $name.out`)
+end
+
+"""
 assumes julia is running from the project directory
 """
 function zeta_function_tcr(p,polynomial)
@@ -124,7 +140,7 @@ function zeta_function_tcr(ps::Array,fs::Array)
   l = length(ps)
   names = fill("",l)
   for i in 1:l
-    d = degree(f,1) # assumes homogeneous
+    d = total_degree(f) # assumes homogeneous
     n = length(gens(parent(fs[i])))
     names[i] = "example$(i)_dim$(n-1)_degree$(d)_" * unique_id
   end
