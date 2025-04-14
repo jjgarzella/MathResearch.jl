@@ -20,6 +20,7 @@ function projective_space_fan_string(n)
 
   projstring
 end#function
+
 """
 outputs the exponent vector of f in the form used
 by controlled reduction scripts
@@ -27,13 +28,14 @@ by controlled reduction scripts
 Note: use trim=true for ToricControlledReduction,
 use trim=false for controlledreduction
 """
-function exponent_vector_string(f;trim=true)
+function exponent_vector_string(f;trim=true,rev=false)
   ev_string = ""
   ev_string *= "["
 
   for exp_vec in exponent_vectors(f)
     trimfactor = trim ? 1 : 0
-    ev_string *= "[" * join(exp_vec[1:end-trimfactor], " ") * "]"
+    ev = rev ? reverse(exp_vec) : exp_vec
+    ev_string *= "[" * join(ev[1:end-trimfactor], " ") * "]"
   end
 
   ev_string *= "]"
@@ -82,7 +84,7 @@ end#function
 
 function cr_string(p,f)
   crstring = "$p\n"
-  crstring *= exponent_vector_string(f,trim=false) * "\n"
+  crstring *= exponent_vector_string(f,trim=false,rev=true) * "\n"
   crstring *= coeffs_string(f)
 
   crstring
@@ -116,7 +118,9 @@ function zeta_function_cr(p,polynomial)
   n = length(gens(parent(f)))
   name = "data/cr_ex_dim$(n-1)_degree$(d)_" * unique_id
   open(name,"w") do outfile
-    println(outfile,cr_string(p,polynomial))
+    inputstring = cr_string(p,polynomial)
+    println(inputstring)
+    println(outfile,inputstring)
   end
   
   run(`./run_cr.bash $name`)
